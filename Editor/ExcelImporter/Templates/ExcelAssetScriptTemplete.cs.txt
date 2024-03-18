@@ -1,0 +1,10 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[ExcelAsset(AssetPath = "AssetBundles/Datas",ExcelName = "#ASSETSCRIPTNAME#",LogOnImport = true)]
+public class XLSXLOADER_#ASSETSCRIPTNAME# : ScriptableObject
+{
+#ENTITYFIELDS#
+}

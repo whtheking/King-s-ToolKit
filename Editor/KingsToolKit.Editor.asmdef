@@ -1,0 +1,16 @@
+{
+    "name": "KingsToolKitEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d4fd1c81e4c70b2469827ed7660a1999"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
