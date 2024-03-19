@@ -19,15 +19,15 @@ public static partial class HierarchyExtension
             GUIContent icon;
             if (!instantce.activeSelf)
             {
-                icon = EditorGUIUtility.IconContent("d_redLight");
+                icon = EditorGUIUtility.IconContent("toggle");
             }
             else if (!instantce.activeInHierarchy)
             {
-                icon = EditorGUIUtility.IconContent("d_orangeLight");
+                icon = EditorGUIUtility.IconContent("toggle mixed");
             }
             else
             {
-                icon = EditorGUIUtility.IconContent("d_greenLight");
+                icon = EditorGUIUtility.IconContent("toggle on");
             }
             Rect rect = new Rect(selectionRect);
             rect.x += selectionRect.width;
