@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:Toolbar>
+        <uie:ObjectField label="Asset" name="ObjectField" allow-scene-objects="true" usage-hints="None" style="height: 15px; width: 200px; flex-shrink: 1; flex-grow: 0; -unity-text-align: middle-left; flex-basis: 250px; background-color: rgba(164, 164, 164, 0.11); align-items: stretch; justify-content: flex-start; align-self: auto; visibility: visible; overflow: hidden; opacity: 1; display: flex; position: relative;" />
+    </uie:Toolbar>
+    <SplitView fixed-pane-initial-dimension="225" style="background-color: rgb(63, 63, 63);">
+        <ui:VisualElement name="Inspector" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 290px;" />
+        <ui:VisualElement name="GraphView" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <LogicRunnerGraphView focusable="true" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </SplitView>
+</ui:UXML>
