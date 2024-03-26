@@ -6,7 +6,7 @@ using UnityEngine;
 public class GraphNode : Node
 {
     //逻辑数据
-    private INode m_node;
+    private LogicNode m_node;
 
     //编辑器数据
     public GraphNodeData graphNodeData;
@@ -17,9 +17,9 @@ public class GraphNode : Node
     public Port outputPort;
     public Action<GraphNode> onSelected = null;
 
-    public INode Node { get => m_node; }
+    public LogicNode Node { get => m_node; }
 
-    public GraphNode(INode node, GraphNodeData data, LogicRunnerGraphView runnerView)
+    public GraphNode(LogicNode node, GraphNodeData data, LogicRunnerGraphView runnerView)
     {
         graphNodeData= data;
         m_node = node;
@@ -39,10 +39,10 @@ public class GraphNode : Node
 
     private void CreatePorts()
     {
-        inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(INode));
+        inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(LogicNode));
         inputPort.portName = "In";
         inputContainer.Add(inputPort);
-        outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(INode));
+        outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(LogicNode));
         outputPort.portName = "Out";
         outputContainer.Add(outputPort);
         RefreshExpandedState();

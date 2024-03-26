@@ -1,4 +1,5 @@
 using System.Net.Sockets;
+using Unity.CodeEditor;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -62,15 +63,22 @@ public class LogicRunnerEditor : EditorWindow
         }
         m_inspectorView.Clear();
         var nodeData = m_dataSaver.Nodes.Find(x => x.GUID == node.Node.GUID);
-        Editor nodeEditor = Editor.CreateEditor(nodeData.LogicNode as UnityEngine.Object);
-        Editor graphEditor = Editor.CreateEditor(nodeData.graphNode);
+        if (nodeData == null)
+        {
+            m_inspectorView.Clear();
+            return;
+        }
+
+        Editor logicEditor = Editor.CreateEditor(nodeData.LogicNode);
+        Editor graphEditor = Editor.CreateEditor(nodeData.GraphNode);
         IMGUIContainer container = new IMGUIContainer(() =>
         {
-            nodeEditor.OnInspectorGUI();
-            GUILayout.Label("xxxxxxx");
+            EditorGUILayout.Space();
+            logicEditor.OnInspectorGUI();
+            EditorGUILayout.Space();
             graphEditor.OnInspectorGUI();
         });
-
         m_inspectorView.Add(container);
     }
+
 }

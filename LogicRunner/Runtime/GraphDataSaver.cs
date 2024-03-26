@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
+public class NodeData : ScriptableObject
+{
+    public string GUID;
+    public LogicNode LogicNode;
+    public GraphNodeData GraphNode;
+
+    public NodeData(string gUID, LogicNode logicNode, GraphNodeData graphNode)
+    {
+        GUID = gUID;
+        LogicNode = logicNode;
+        GraphNode = graphNode;
+    }
+}
+
+
 [CreateAssetMenu(menuName = "StageRunner")]
 public class GraphDataSaver : ScriptableObject
 {
-    public class NodeData
-    {
-        public string GUID;
-        public INode LogicNode;
-        public GraphNodeData graphNode;
-
-        public NodeData(string gUID, INode logicNode, GraphNodeData graphNode)
-        {
-            GUID = gUID;
-            LogicNode = logicNode;
-            this.graphNode = graphNode;
-        }
-    }
 
     private List<NodeData> m_nodes = new();
 
     public List<NodeData> Nodes { get => m_nodes; }
 
-    public void SaveNode(INode logicNode, GraphNodeData graphNodeData)
+    public void SaveNode(LogicNode logicNode, GraphNodeData graphNodeData)
     {
         m_nodes.Add(new NodeData(logicNode.GUID, logicNode, graphNodeData));
     }

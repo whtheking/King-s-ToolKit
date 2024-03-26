@@ -43,7 +43,7 @@ public class LogicRunnerGraphView : UnityEditor.Experimental.GraphView.GraphView
 
         foreach (var nodeData in graphDataSaver.Nodes)
         {
-            CreateGraphNode(nodeData.LogicNode, nodeData.graphNode);
+            CreateGraphNode(nodeData.LogicNode, nodeData.GraphNode);
         }
         foreach (var nodeData in graphDataSaver.Nodes)
         {
@@ -65,14 +65,18 @@ public class LogicRunnerGraphView : UnityEditor.Experimental.GraphView.GraphView
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
         base.BuildContextualMenu(evt);
-        var moisePos = evt.localMousePosition;
+        var mousePos = evt.localMousePosition;
         {
-            var types = TypeCache.GetTypesDerivedFrom<INode>();
+            List<Type> types = new()
+            {
+                typeof(LogicNode)
+            };
+            types.AddRange(TypeCache.GetTypesDerivedFrom(typeof(LogicNode)));
             foreach (var type in types)
             {
                 evt.menu.AppendAction($"{type.Name}", (_) =>
                 {
-                    CreateNode(type, moisePos);
+                    CreateNode(type, mousePos);
                 });
             }
         }
@@ -85,7 +89,7 @@ public class LogicRunnerGraphView : UnityEditor.Experimental.GraphView.GraphView
 
     public void CreateNode(Type type, Vector2 mousePosition)
     {
-        INode node = ScriptableObject.CreateInstance(type) as INode;
+        var node = Activator.CreateInstance(type) as LogicNode;
         node.Name = type.Name;
         node.GUID = GUID.Generate().ToString();
         var graphNodeData = new GraphNodeData();
@@ -96,7 +100,7 @@ public class LogicRunnerGraphView : UnityEditor.Experimental.GraphView.GraphView
         graphDataSaver.SaveNode(node, graphNodeData);
     }
 
-    public void CreateGraphNode(INode node, GraphNodeData graphNodeData)
+    public void CreateGraphNode(LogicNode node, GraphNodeData graphNodeData)
     {
         GraphNode graphNode = new GraphNode(node, graphNodeData, this);
         AddElement(graphNode);
