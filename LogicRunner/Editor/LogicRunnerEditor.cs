@@ -69,14 +69,12 @@ public class LogicRunnerEditor : EditorWindow
             return;
         }
 
-        Editor logicEditor = Editor.CreateEditor(nodeData.LogicNode);
-        Editor graphEditor = Editor.CreateEditor(nodeData.GraphNode);
+        Editor inspectorEditor = Editor.CreateEditor(nodeData);
+        (inspectorEditor as NodeDataDrawer).graphNode = node;
         IMGUIContainer container = new IMGUIContainer(() =>
         {
             EditorGUILayout.Space();
-            logicEditor.OnInspectorGUI();
-            EditorGUILayout.Space();
-            graphEditor.OnInspectorGUI();
+            inspectorEditor.OnInspectorGUI();
         });
         m_inspectorView.Add(container);
     }

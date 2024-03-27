@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class LogicNode : ScriptableObject
+[Serializable]
+public class LogicNode 
 {
     [SerializeField]
     private ENodeState m_state = ENodeState.Idle;

@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 
-public class GraphNodeData : ScriptableObject
+[Serializable]
+public class GraphNodeData 
 {
     public string name;
     public Vector2 viewPosition;
