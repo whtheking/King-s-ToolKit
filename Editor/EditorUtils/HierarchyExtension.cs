@@ -30,7 +30,7 @@ public static partial class HierarchyExtension
                 icon = EditorGUIUtility.IconContent("toggle on");
             }
             Rect rect = new Rect(selectionRect);
-            rect.x += selectionRect.width;
+            rect.x += selectionRect.width-20;
             rect.width = 14f;
             rect.height = 14f;
             if (GUI.Button(rect, icon, new GUIStyle()))
