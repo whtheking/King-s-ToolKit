@@ -9,6 +9,11 @@ public class GameGlobal : Manager<GameGlobal>
         Init();
     }
 
+    private void Update()
+    {
+        
+    }
+
     public override void Init()
     {
         
